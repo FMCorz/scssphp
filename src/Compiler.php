@@ -2949,6 +2949,7 @@ class Compiler
             $env = $this->getStoreEnv();
         }
 
+        $nextIsRoot = false;
         $hasNamespace = $normalizedName[0] === '^' || $normalizedName[0] === '@' || $normalizedName[0] === '%';
         for (;;) {
             if (array_key_exists($normalizedName, $env->store)) {
@@ -2956,6 +2957,12 @@ class Compiler
             }
 
             if (! $hasNamespace && isset($env->marker)) {
+                if (!$nextIsRoot && !empty($env->store['%content'])) {
+                    $env = $env->store['%content']->scope;
+                    $nextIsRoot = true;
+                    continue;
+                }
+
                 $env = $this->rootEnv;
                 continue;
             }
