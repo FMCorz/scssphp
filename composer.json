@@ -20,16 +20,16 @@
     "autoload-dev": {
         "psr-4": { "Leafo\\ScssPhp\\Test\\": "tests/" }
     },
+            "repositories": [
      {
             "type": "vcs",
             "url":  "git@github.com/paxperscientiam/scssphp.git"
-        },
-        "repositories": [
+        }
+],
     "require": {
         "php": ">=5.4.0",
         "paxperscientiam/scssphp":"dev-master"
-    }
-    ],
+    },
     "require-dev": {
         "squizlabs/php_codesniffer": "~2.5",
         "phpunit/phpunit": "~3.7",
